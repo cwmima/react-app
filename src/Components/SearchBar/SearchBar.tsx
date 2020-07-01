@@ -5,35 +5,26 @@ import DateFnsUtils from '@date-io/date-fns';
 import './SearchBar.css';
 import { IUserInput } from '../../Common/Interfaces';
 
+// define props
 interface ISearchBarProps {
     SetUserInput: (a: IUserInput) => void;
 }
 
 function SearchBar(props: ISearchBarProps) {
-    const [SearchQuery, setSearchQuery] = useState<string | null>("");
-    const handleSearchQueryChange = (s: string | null) => {
-        setSearchQuery(s);
-    }
-
     const [HasFocus, setHasFocus] = useState<boolean>(false);
 
-    const [StartDate, setStartDate] = useState<Date | null>(
-        new Date('2014-08-18'),
-    );
-    const handleStartDateChange = (date: Date | null) => {
-        setStartDate(date);
-    };
+    const [SearchQuery, setSearchQuery] = useState<string | null>("");
+    const handleSearchQueryChange = (s: string | null) => setSearchQuery(s);
 
-    const [EndDate, setEndDate] = useState<Date | null>(
-        new Date('2020-05-18'),
-    );
-    const handleEndDateChange = (date: Date | null) => {
-        setEndDate(date);
-    };
+    const [StartDate, setStartDate] = useState<Date | null>(new Date('2014-08-18'));
+    const handleStartDateChange = (date: Date | null) => setStartDate(date)
+
+    const [EndDate, setEndDate] = useState<Date | null>(new Date('2020-05-18'));
+    const handleEndDateChange = (date: Date | null) => setEndDate(date);
 
     const handleSubmit = () => {
         if (SearchQuery?.length !== 0 && SearchQuery !== null && SearchQuery !== "") {
-            let UserInput: IUserInput = {
+            const UserInput: IUserInput = {
                 SearchQuery: SearchQuery,
                 StartDate: StartDate,
                 EndDate: EndDate
@@ -99,4 +90,4 @@ function SearchBar(props: ISearchBarProps) {
     </div>
 }
 
-export default SearchBar
+export default SearchBar;

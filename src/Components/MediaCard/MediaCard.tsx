@@ -31,4 +31,4 @@ function MediaCard(props: IMediaCardProps) {
     )
 }
 
-export default MediaCard
+export default MediaCard;

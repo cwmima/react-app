@@ -23,17 +23,14 @@ function MediaGrid(props: IMediaGridProps) {
             .then(response => {
                 setItemArray(response.collection.items)
             })
-            .catch(() => console.log("it didn't work")
-            );
+            .catch(() => console.log("it didn't work"));
     }, [props.SearchQuery, props.EndDate, props.StartDate]);
 
-    var Cards: JSX.Element[] = [];
+    const Cards: JSX.Element[] = [];
     ItemArray.forEach((el: IState, i: Number) => {
-        if (!el || !el.links[0] || !el.data) {
-            return;
-        }
+        if (!el || !el.links[0] || !el.data) { return; }
         Cards.push(
-            <Grid key={"card_"+i} item sm={6} md={4} lg={3} className="MediaGridCard">
+            <Grid key={"card_" + i} item sm={6} md={4} lg={3} className="MediaGridCard">
                 <MediaCard ImageUrl={el['links'][0]['href']} Description={el["data"][0]['description']} />
             </Grid>)
     })
